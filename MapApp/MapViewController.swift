@@ -38,6 +38,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         default:
             println("Defaulted")
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reminderAdded:", name: "REMINDER_ADDED", object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -82,7 +88,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
-        println()
+        println("I'm outta here")
+    }
+    
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        let renderer = MKCircleRenderer(overlay: overlay)
+        
+        renderer.fillColor = UIColor.purpleColor().colorWithAlphaComponent(0.20)
+        renderer.strokeColor = UIColor.blackColor()
+        
+        return renderer
+    }
+    
+    func reminderAdded(notification: NSNotification) {
+        let userInfo = notification.userInfo
+        let geoRegion = userInfo?["region"] as CLCircularRegion
+        
+        let overlay = MKCircle(centerCoordinate: geoRegion.center, radius: geoRegion.radius)
+        self.mapView.addOverlay(overlay)
     }
 
 }

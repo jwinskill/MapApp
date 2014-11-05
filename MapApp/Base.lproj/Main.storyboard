@@ -7,7 +7,7 @@
         <!--Item 2-->
         <scene sceneID="Su9-pM-qax">
             <objects>
-                <viewController storyboardIdentifier="MONITORED_REGIONS_VC" id="VcJ-64-329" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MONITORED_REGIONS_VC" id="VcJ-64-329" customClass="RemindersViewController" customModule="MapApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yjg-PB-ruM"/>
                         <viewControllerLayoutGuide type="bottom" id="XIH-te-ldi"/>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="8998" id="JKG-9Y-ZAM">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="REMINDER_CELL" id="JKG-9Y-ZAM" userLabel="Cell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JKG-9Y-ZAM" id="We4-3Z-PPJ">
@@ -39,6 +39,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="6fP-s2-Ewd"/>
+                    <connections>
+                        <outlet property="tableView" destination="B6g-Ko-kD3" id="pGN-Nc-PYZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAy-Xf-c50" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -103,7 +106,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="0hs-Fd-Xku"/>
                                     <barButtonItem title="Add Region" id="cZ4-0I-6aF">
                                         <connections>
-                                            <action selector="addRegionButtonPressed:" destination="6k3-2n-Urd" id="Rwn-bq-Cpr"/>
+                                            <action selector="didPressReminderButton:" destination="6k3-2n-Urd" id="no0-Iu-Ka9"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
