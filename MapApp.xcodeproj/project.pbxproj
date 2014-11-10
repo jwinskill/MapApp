@@ -16,6 +16,7 @@
 		0369B2A51A081F5400DE9262 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0369B2A41A081F5400DE9262 /* MapKit.framework */; };
 		0369B2A71A08208A00DE9262 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0369B2A61A08208A00DE9262 /* MapViewController.swift */; };
 		0369B2AB1A0839D000DE9262 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0369B2AA1A0839D000DE9262 /* MapDetailViewController.swift */; };
+		037DDB8D1A110F3C002A6E52 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037DDB8C1A110F3C002A6E52 /* CloudKit.framework */; };
 		03E4B7041A099DFD002E598A /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4B7031A099DFD002E598A /* Reminder.swift */; };
 		03EB706C1A0982E80063D3E7 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EB706B1A0982E80063D3E7 /* RemindersViewController.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,8 @@
 		0369B2A41A081F5400DE9262 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0369B2A61A08208A00DE9262 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0369B2AA1A0839D000DE9262 /* MapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
+		037DDB8B1A110F37002A6E52 /* MapApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MapApp.entitlements; sourceTree = "<group>"; };
+		037DDB8C1A110F3C002A6E52 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		03E4B7031A099DFD002E598A /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		03EB706B1A0982E80063D3E7 /* RemindersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RemindersViewController.swift; path = ../RemindersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0369B2A51A081F5400DE9262 /* MapKit.framework in Frameworks */,
+				037DDB8D1A110F3C002A6E52 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +74,7 @@
 		0369B2731A081EED00DE9262 = {
 			isa = PBXGroup;
 			children = (
+				037DDB8C1A110F3C002A6E52 /* CloudKit.framework */,
 				0369B2A41A081F5400DE9262 /* MapKit.framework */,
 				0369B27E1A081EED00DE9262 /* MapApp */,
 				0369B2971A081EED00DE9262 /* MapAppTests */,
@@ -89,6 +94,7 @@
 		0369B27E1A081EED00DE9262 /* MapApp */ = {
 			isa = PBXGroup;
 			children = (
+				037DDB8B1A110F37002A6E52 /* MapApp.entitlements */,
 				03EB706D1A0982EF0063D3E7 /* Controllers */,
 				0369B2811A081EED00DE9262 /* AppDelegate.swift */,
 				037DDB8A1A1082ED002A6E52 /* Model */,
@@ -193,8 +199,12 @@
 				TargetAttributes = {
 					0369B27B1A081EED00DE9262 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 23Q3452ECP;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -379,6 +389,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MapApp/MapApp.entitlements;
 				INFOPLIST_FILE = MapApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -389,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MapApp/MapApp.entitlements;
 				INFOPLIST_FILE = MapApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

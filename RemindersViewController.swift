@@ -24,6 +24,8 @@ class RemindersViewController: UIViewController, UITableViewDataSource, NSFetche
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         self.context = appDelegate.managedObjectContext!
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didGetCloudChanges:", name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: appDelegate.persistentStoreCoordinator)
+        
         var fetchRequest = NSFetchRequest(entityName: "Reminder")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         
@@ -50,6 +52,10 @@ class RemindersViewController: UIViewController, UITableViewDataSource, NSFetche
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.reloadData()
+    }
+    
+    func didGetCloudChanges(notification: NSNotification) {
+        self.context.mergeChangesFromContextDidSaveNotification(notification)
     }
 
 }
