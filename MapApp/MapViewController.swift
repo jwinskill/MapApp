@@ -87,6 +87,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
         println("great success!")
+        if let circularRegion = region as? CLCircularRegion {
+            if (UIApplication.sharedApplication().applicationState == UIApplicationState.Background) {
+                let notification = UILocalNotification()
+                notification.alertAction = "Reminder Triggered"
+                notification.alertBody = "You have entered a set area"
+                UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+            }
+        }
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
