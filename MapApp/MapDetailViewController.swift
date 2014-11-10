@@ -30,7 +30,7 @@ class MapDetailViewController: UIViewController {
     }
     
     @IBAction func didPressReminderButton(sender: AnyObject) {
-        var geoRegion = CLCircularRegion(center: selectedAnnotation.coordinate, radius: 100.0, identifier: "TEST_REGION")
+        var geoRegion = CLCircularRegion(center: selectedAnnotation.coordinate, radius: 1000.0, identifier: "TEST_REGION")
         self.locationManager.startMonitoringForRegion(geoRegion)
         self.dismissViewControllerAnimated(true, completion: nil)
         
@@ -38,7 +38,7 @@ class MapDetailViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().postNotificationName("REMINDER_ADDED", object: self, userInfo: ["region": geoRegion])
         
-        var newReminder = NSEntityDescription.insertNewObjectForEntityForName("Reminder", inManagedObjectContext: context) as Reminder
+        var newReminder = NSEntityDescription.insertNewObjectForEntityForName("Reminder", inManagedObjectContext: self.context) as Reminder
         newReminder.date = date
         newReminder.latitude = geoRegion.center.latitude
         newReminder.longitude = geoRegion.center.longitude

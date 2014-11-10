@@ -46,6 +46,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    // MARK: - CLLocationManagerDelegate Methods
+    
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
         case .Authorized:
